@@ -2,11 +2,13 @@
 FROM ubuntu:groovy-20210325.1
 
 # Install software
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get -y install nginx memcached python3 python3-pip
+RUN apt-get -y install nginx memcached php
 RUN apt-get clean
 
 # Create directories
+RUN rm -Rf /var/www/html/*
 RUN mkdir /var/www/html/webroot
 RUN mkdir /var/www/html/scripts
 
@@ -16,6 +18,7 @@ COPY ./docker/scripts/run.sh /var/www/html/run.sh
 COPY ./webroot /var/www/html/webroot
 
 WORKDIR /var/www/html
+VOLUME /var/www/html/webroot
 
 # Listen here
 EXPOSE 80
