@@ -65,6 +65,16 @@ class ComposerStaticInit927ed2810fc392475980ce80f6dcbf36
         ),
     );
 
+    public static $prefixesPsr0 = array (
+        'E' => 
+        array (
+            'EveNN\\' => 
+            array (
+                0 => __DIR__ . '/../..' . '/src',
+            ),
+        ),
+    );
+
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
@@ -730,6 +740,7 @@ class ComposerStaticInit927ed2810fc392475980ce80f6dcbf36
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit927ed2810fc392475980ce80f6dcbf36::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit927ed2810fc392475980ce80f6dcbf36::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit927ed2810fc392475980ce80f6dcbf36::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit927ed2810fc392475980ce80f6dcbf36::$classMap;
 
         }, null, ClassLoader::class);

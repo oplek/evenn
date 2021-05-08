@@ -5,7 +5,8 @@ FROM ubuntu:groovy-20210325.1
 # Install software
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get -y install nginx memcached nano php
+RUN apt-get -y install nginx memcached nano php php-memcached php-curl php-json php-mbstring php-dom php-yaml cron
+RUN apt-get -y install nano
 #RUN apt-get clean
 
 # Create directories
@@ -22,6 +23,10 @@ COPY ./docker/scripts/run.sh /var/www/html/run.sh
 WORKDIR /var/www/html
 VOLUME /var/www/html/webroot
 VOLUME /var/www/html/engine
+
+# Set up extra dev stuff
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 # Listen here
 EXPOSE 80

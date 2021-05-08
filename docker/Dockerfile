@@ -4,7 +4,7 @@ FROM ubuntu:groovy-20210325.1
 # Install software
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
-RUN apt-get -y install nginx memcached php
+RUN apt-get -y install nginx memcached nano php php-memcached php-curl php-json php-mbstring php-dom php-yaml cron
 RUN apt-get clean
 
 # Create directories
