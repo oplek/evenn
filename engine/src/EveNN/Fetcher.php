@@ -6,7 +6,7 @@ use EveNN\Config;
 use EveNN\MemcacheClient;
 
 /**
- * Remoted fetches and locally stores/fetches killmails.
+ * Remotely fetches and locally stores/fetches killmails.
  */
 class Fetcher {
 
@@ -21,6 +21,13 @@ class Fetcher {
         if ( !Config::get('fetcher_active', FALSE) ) {
             return FALSE;
         }
+        
+        // Are we locked?
+        $lock = MemcacheClient::get('fetcher_run', FALSE);
+        if ( $lock ) { return FALSE; }
+
+        // Lock
+        MemcacheClient::set('fetcher_run', TRUE, 120);
 
         // Get existing raw list
         $list = MemcacheClient::get('raw', []);
@@ -35,7 +42,7 @@ class Fetcher {
             $json = json_decode($raw, TRUE);
             $filename = microtime();
             if ( $json ) {                
-                $list[$filename] = $json['package'];
+                $list[$filename] = $raw;
                 $flag = isset($json['package']['killID']) && $max >= 0;
             } else {
                 $list[$filename] = "fail: {$raw}";
@@ -46,6 +53,7 @@ class Fetcher {
 
         // Save
         MemcacheClient::set('raw', $list);
+        MemcacheClient::set('fetcher_run', FALSE);
 
         return TRUE;
     }

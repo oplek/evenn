@@ -3,7 +3,7 @@
 namespace EveNN;
 
 /**
- * Configuration management. This is read-only.
+ * Configuration management. The file is read-only.
  */
 class Config {
     /**
