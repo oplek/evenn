@@ -34,4 +34,18 @@ class Event {
         $this->targetID = $targetID;
     }
 
+    /**
+     * Output structure to battle report.
+     * 
+     * @return array
+     *   Structure
+     */
+    function output() {
+        return [
+            't' => $this->ts,
+            'y' => $this->type,
+            'i' => $this->targetID
+        ];
+    }
+
 }

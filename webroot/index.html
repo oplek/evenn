@@ -1,9 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <title>EveNN</title>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
 
+        <!--
+        <script type="x-shader/x-fragment" id=""></script>
+        <script type="x-shader/x-vertex" id=""></script>
+        -->
+
+        <script type="x-shader/x-fragment" id="br_frag_crossfade">
+            uniform float time;
+            void main()	{
+                gl_FragColor = vec4( 0.0,1.0,0.0, 1.0 );
+            }
+        </script>
+        <script type="x-shader/x-vertex" id="br_vert_crossfade">
+            void main()
+            {
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                gl_Position = projectionMatrix * mvPosition;
+            }       
+        </script>
+
+        <script type="x-shader/x-fragment" id="br_frag_dots">
+            uniform vec3 color;
+            uniform sampler2D texture;
+            varying vec3 vColor;
+            void main() {
+                gl_FragColor = vec4( color * vColor, 1.0 );
+                gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
+                if ( gl_FragColor.a < ALPHATEST ) discard;
+            }
+        </script>
+        <script type="x-shader/x-vertex" id="br_vert_dots">
+            attribute float size;
+            attribute vec3 customColor;
+            varying vec3 vColor;
+            void main() {
+                vColor = customColor;
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                gl_PointSize = size * ( 300.0 / -mvPosition.z );
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        </script>
+
+        <script type="x-shader/x-fragment" id="br_frag_planet">
+            uniform float time;
+            void main()	{
+                gl_FragColor = vec4( 0.0,1.0,0.0, 1.0 );
+            }
+        </script>
+        <script type="x-shader/x-vertex" id="br_vert_planet">
+            void main()
+            {
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        </script>
+
+        <script type="x-shader/x-fragment" id="br_frag_star">
+            uniform float time;
+            void main()	{
+                gl_FragColor = vec4( 1.0,1.0,1.0, 1.0 );
+            }
+        </script>
+        <script type="x-shader/x-vertex" id="br_vert_star">
+            void main()
+            {
+                vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                gl_Position = projectionMatrix * mvPosition;
+            }
+        </script>
+       
     </head>
     <body>
-        Hello.2
+        <main id="main" class="layout-default"></main>
+
+        <script src="js/jquery.js"></script>
+        <script src="js/three.min.js"></script>
+        <script src="js/tween.js"></script>
+        <script src="js/threeHelper.class.js?v=1"></script>
+        <script src="js/battleReport.module.js?v=1"></script>
+        <script src="js/main.js?v=1"></script>
     </body>
 </html>

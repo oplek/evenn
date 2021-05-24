@@ -55,6 +55,13 @@ final class KMTest extends TestCase
 
         $this->assertArrayHasKey('y', $km->loc, 'Bad location structure.');
         $this->assertIsFloat($km->loc['y'], 'Bad location value.');
+
+        // Empty killmail
+        $kmStr = $this->getFile('blank.json');
+        $this->assertNotNull($kmStr, 'blank.json failed to load.');
+        $km = new KM($kmStr);
+        $this->assertFalse($km->success, 'Blank killmail should have failed.');
+     
     }
 
     /**

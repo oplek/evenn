@@ -33,11 +33,12 @@ class Attacker {
      *   Total damage dealt in KM.
      */
     function __construct(array $data, $totalDam = NULL) {
-        $this->attackerID = isset($data['character_id']) ? $data['character_id'] : 0;
-        $this->corpID = isset($data['corporation_id']) ? $data['corporation_id'] : 0;
-        $this->allianceID = isset($data['alliance_id']) ? $data['alliance_id'] : 0;
-        $this->shipID = isset($data['ship_type_id']) ? $data['ship_type_id'] : 0;
-        $this->weaponID = isset($data['weapon_type_id']) ? $data['weapon_type_id'] : 0;
+        $this->attackerID = isset($data['character_id']) ? $data['character_id'] : -1;
+        $this->corpID = isset($data['corporation_id']) ? $data['corporation_id'] : -1;
+        $this->allianceID = isset($data['alliance_id']) ? $data['alliance_id'] : -1;
+    
+        $this->shipID = isset($data['ship_type_id']) ? $data['ship_type_id'] : -1;
+        $this->weaponID = isset($data['weapon_type_id']) ? $data['weapon_type_id'] : -1;
 
         if ( $totalDam && isset($data['damage_done']) ) {
             $this->percentDam = $data['damage_done'] / $totalDam;

@@ -40,11 +40,20 @@ final class AttackerTest extends TestCase
         $this->assertTrue($km->success, 'basic-01.json parsing failed. Check JSON syntax.');
 
         $attacker = current($km->attackers);
+        //print_r($km);
+        //print_r($attacker);
+
         $this->assertIsInt($attacker->attackerID, 'Bad attackerID');
         $this->assertIsInt($attacker->corpID, 'Bad corpID');
         $this->assertIsInt($attacker->allianceID, 'Bad allianceID');
         $this->assertIsInt($attacker->shipID, 'Bad shipID');
         $this->assertIsInt($attacker->weaponID, 'Bad weaponID');
+
+        $this->assertGreaterThan(0, $attacker->attackerID, 'Bad attackerID');
+        $this->assertGreaterThan(0, $attacker->corpID, 'Bad corpID');
+        $this->assertGreaterThan(0, $attacker->allianceID, 'Bad allianceID');
+        $this->assertGreaterThan(0, $attacker->shipID, 'Bad shipID');
+        $this->assertGreaterThan(0, $attacker->weaponID, 'Bad weaponID');
     }
 
     

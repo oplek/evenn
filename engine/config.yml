@@ -1,4 +1,8 @@
 build: 1
-engine_active: false
-fetcher_active: false
+engine_active: true
+fetcher_active: true
 fetch_max: 100
+max_battle_age: 7200
+log_path: 'log/main.log'
+log_enable: true
+cache_path: 'cache/'

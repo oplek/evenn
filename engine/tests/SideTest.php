@@ -64,20 +64,43 @@ final class SideTest extends TestCase
         // Empty
         $sideD = new Side();
 
+        // Alliance-only overlap 
+        $sideE = new Side();
+        $sideE->addCharacterIDs([7]);
+        $sideE->addCorpIDs([7]);
+        $sideE->addAllianceIDs([4]);        
+
         $overlap = $sideA->percentOverlap($sideB);
         $this->assertEquals(0.5, $overlap['members']);
         $this->assertEquals(0.5, $overlap['corp']);
         $this->assertEquals(0.5, $overlap['alliance']);
+        $this->assertEquals(0.5, $overlap['max']);
 
         $overlap = $sideA->percentOverlap($sideC);
         $this->assertEquals(0, $overlap['members']);
         $this->assertEquals(0, $overlap['corp']);
         $this->assertEquals(0, $overlap['alliance']);
+        $this->assertEquals(0, $overlap['max']);
 
         $overlap = $sideA->percentOverlap($sideD);
         $this->assertEquals(0, $overlap['members']);
         $this->assertEquals(0, $overlap['corp']);
         $this->assertEquals(0, $overlap['alliance']);
+        $this->assertEquals(0, $overlap['max']);
+
+        // 100% of D alliance should be in A.
+        $overlap = $sideA->percentOverlap($sideE);
+        $this->assertEquals(0, $overlap['members']);
+        $this->assertEquals(0, $overlap['corp']);
+        $this->assertEquals(1.0, $overlap['alliance']);
+        $this->assertEquals(1.0, $overlap['max']);
+
+        // 25% of A alliance should be in D.
+        $overlap = $sideE->percentOverlap($sideA);
+        $this->assertEquals(0, $overlap['members']);
+        $this->assertEquals(0, $overlap['corp']);
+        $this->assertEquals(0.25, $overlap['alliance']);
+        $this->assertEquals(0.25, $overlap['max']);
     }
 
     /**

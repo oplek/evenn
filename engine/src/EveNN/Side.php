@@ -93,13 +93,16 @@ class Side {
      * 
      * @param Side &$side
      *   The other side.
+     * 
+     * @return array
+     *   Overlaps by type.
      */
     function percentOverlap($side) {
         return $this->percentOverlapGeneral($side->memberIDs, $side->corpIDs, $side->allianceIDs);        
     }
 
     /**
-     * Determines percentage overlaps.
+     * Determines percentage overlaps. How many in other are in this?
      * 
      * @param array $memberIDs
      *   List of member IDs.
@@ -107,6 +110,9 @@ class Side {
      *   List of corporation IDs.
      * @param array $allianceIDs
      *   List of alliance IDs.
+     * 
+     * @return array
+     *   Overlaps by type.
      */
     function percentOverlapGeneral($memberIDs, $corpIDs, $allianceIDs) {
         $data = [
@@ -138,7 +144,9 @@ class Side {
         if ( $cmembers > 0 ) { $data['members'] /= $cmembers; }
         if ( $ccorp > 0 ) { $data['corp'] /= $ccorp; }
         if ( $calliance > 0 ) { $data['alliance'] /= $calliance; }
-        
+
+        $data['max'] = max($data['members'], $data['corp'], $data['alliance']);
+       
         return $data;
     }
 

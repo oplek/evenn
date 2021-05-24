@@ -4,6 +4,7 @@ namespace EveNN;
 
 use EveNN\Config;
 use EveNN\MemcacheClient;
+use EveNN\Log;
 
 /**
  * Remotely fetches and locally stores/fetches killmails.
@@ -26,7 +27,7 @@ class Fetcher {
         $lock = MemcacheClient::get('fetcher_run', FALSE);
         if ( $lock ) { return FALSE; }
 
-        // Lock
+        // Lock 
         MemcacheClient::set('fetcher_run', TRUE, 120);
 
         // Get existing raw list
@@ -34,16 +35,26 @@ class Fetcher {
 
         $flag = TRUE;
         $max = Config::get('fetch_max', 10); // Max fetch per round
+        $count = 0;
         do {
             $max--;
 
             $raw = self::getRemote();
+            if ( $raw ) {
+                //Log::log("... fetched KM");
+            } else {
+                Log::log("... failed fetched KM");
+            }
 
             $json = json_decode($raw, TRUE);
             $filename = microtime();
             if ( $json ) {                
-                $list[$filename] = $raw;
                 $flag = isset($json['package']['killID']) && $max >= 0;
+
+                if ( $flag ) {
+                    $list[$filename] = $raw;
+                    $count++;
+                }
             } else {
                 $list[$filename] = "fail: {$raw}";
                 $flag = FALSE;
@@ -55,6 +66,8 @@ class Fetcher {
         MemcacheClient::set('raw', $list);
         MemcacheClient::set('fetcher_run', FALSE);
 
+        Log::log("{$count} KMs fetched.");
+
         return TRUE;
     }
 
@@ -64,7 +77,7 @@ class Fetcher {
      * @return string
      *   Raw response.
      */
-    function getRemote() {
+    static function getRemote() {
         return file_get_contents('https://redisq.zkillboard.com/listen.php');
     }
 
@@ -77,7 +90,7 @@ class Fetcher {
      * @return array 
      *   List of raw, compressed entries.
      */
-    function getRaw($purge = FALSE) {
+    static function getRaw($purge = FALSE) {
         $raw = MemcacheClient::get('raw', []);
         if ( $purge ) {
             MemcacheClient::delete('raw');

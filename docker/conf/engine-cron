@@ -1,0 +1,2 @@
+*/2 * * * * root php /var/www/html/engine/run-fetcher.php 2>&1
+1-59/2 * * * * root php /var/www/html/engine/run-proc.php 2>&1
