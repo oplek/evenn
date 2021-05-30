@@ -10,12 +10,20 @@ use EveNN\Side;
 use EveNN\Attacker;
 use EveNN\Participant;
 use EveNN\Event;
+use EveNN\MemcacheClient;
 
 /**
  * Tests the Battle class.
  */
 final class BattleTest extends TestCase
 {
+    /**
+     * Update memcache prefix.
+     */
+    protected function setUp(): void {
+        MemcacheClient::$prefix = 'test_';
+    }
+
     /**
      * Loads a test file.
      * 
@@ -463,23 +471,28 @@ final class BattleTest extends TestCase
     public function testIsMajor(): void
     {
         $b = new Battle();     
-        $this->assertFalse($b->isMajor(5), 'Empty battle should not be major.');
+        $this->assertFalse($b->isMajorAndValid(5), 'Empty battle should not be major.');
 
         $side = new Side();
         $side->addCharacterIDs([1,2,3]);
         $b->sides[] = $side;
-        $this->assertFalse($b->isMajor(5), 'One-sided 3-member battle should not be major.');
+        $this->assertFalse($b->isMajorAndValid(5), 'One-sided 3-member battle should not be major.');
 
         $b->sides[0]->addCharacterIDs([5,6,7]);
-        $this->assertFalse($b->isMajor(5), 'One-sided 6-member battle should not be major.');
+        $this->assertFalse($b->isMajorAndValid(5), 'One-sided 6-member battle should not be major.');
 
         $side = new Side();
         $side->addCharacterIDs([8,9,10]);
         $b->sides[] = $side;
-        $this->assertFalse($b->isMajor(5), 'Two-sided 6/3-member battle should not be major.');
+        $this->assertFalse($b->isMajorAndValid(5), 'Two-sided 6/3-member battle should not be major.');
 
         $b->sides[1]->addCharacterIDs([11,12,13]);
-        $this->assertTrue($b->isMajor(5), 'Two-sided 6/6-member battle should be major.');
+        $this->assertTrue($b->isMajorAndValid(5), 'Two-sided 6/6-member battle should be major.');
+
+        $side = new Side();
+        $side->addCharacterIDs([14,15,16]);
+        $b->sides[] = $side;
+        $this->assertFalse($b->isMajorAndValid(5), '3 sides should be invalid.');
     }
 
     /**

@@ -25,5 +25,5 @@ if ( Engine::run() ) {
     Log::log("Processor offline.");
 }
 
-$mem = memory_get_peak_usage();
-Log::log("Complete (Mem: $mem)\n");
+$mem = round(memory_get_peak_usage() / 1000 / 1000, 1);
+Log::log("Complete (Mem: {$mem}MB)\n");

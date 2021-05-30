@@ -17,15 +17,19 @@ class Participant {
      * @var string $allianceName The character alliance name.
      * @var int $shipID The character alliance ID.
      * @var string $shipName The character alliance name.
+     * @var int $weaponID The weapon type.
+     * @var string $weaponName The weapon name.
      */
-    var int $memberID;
+    var int $memberID = -1;
     var string $name;
-    var int $corpID;
+    var int $corpID = -1;
     var string $corpName;
-    var int $allianceID;
+    var int $allianceID = -1;
     var string $allianceName;
-    var int $shipID;
-    var int $shipName;
+    var int $shipID = -1;
+    var string $shipName;
+    var int $weaponID = -1;
+    var string $weaponName;
 
     /**
      * @var bool $isLoaded Is the character fully loaded?
@@ -43,12 +47,15 @@ class Participant {
      *   Alliance ID.
      * @param int $shipID
      *   Ship type ID.
+     * @param int $weaponID
+     *   Weapon type Id.
      */
-    function __construct(int $memberID, int $corpID, int $allianceID = -1, int $shipID = -1) {
+    function __construct(int $memberID, int $corpID, int $allianceID = -1, int $shipID = -1, int $weaponID = -1) {
         $this->memberID = $memberID;
         $this->corpID = $corpID;
         $this->allianceID = $allianceID;
         $this->shipID = $shipID;
+        $this->weaponID = $weaponID;
     }
 
     /**

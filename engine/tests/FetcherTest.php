@@ -5,6 +5,7 @@ require_once 'vendor/autoload.php';
 use PHPUnit\Framework\TestCase;
 use EveNN\Fetcher;
 use EveNN\Config;
+use EveNN\MemcacheClient;
 
 /**
  * Tests the Fetcher functionality.
@@ -12,6 +13,13 @@ use EveNN\Config;
  */
 final class FetcherTest extends TestCase
 {
+    /**
+     * Update memcache prefix.
+     */
+    protected function setUp(): void {
+        MemcacheClient::$prefix = 'test_';
+    }
+
     /**
      * Tests remote fetch..
      * 

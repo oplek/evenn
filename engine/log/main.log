@@ -1,275 +1,136 @@
-e: [S:2 P:3 A:7240]
-12:13am: Expiring battle: [S:2 P:2 A:7274]
-12:13am: Expiring battle: [S:2 P:4 A:7289]
-12:13am: Expiring battle: [S:1 P:3 A:7208]
-12:13am: Expiring battle: [S:2 P:2 A:7209]
-12:13am: Expiring battle: [S:1 P:15 A:7277]
-12:13am: Updating json
-12:13am: Battle 2 is major... adding.
-12:13am: Battle 23 is major... adding.
-12:13am: Battle 77 is major... adding.
-12:13am: Battle 168 is major... adding.
-12:13am: Battle 208 is major... adding.
-12:13am: Complete (Mem: 12207496)
+2 P:2 A:199]
+12:57pm: Created battle: [S:2 P:2 A:171]
+12:57pm: Created battle: [S:2 P:3 A:556]
+12:57pm: Created battle: [S:2 P:2 A:319]
+12:57pm: Processed 5 KMs.
+12:57pm: Ran engine.
+12:57pm: Expiring battle: [S:1 P:6 A:7263]
+12:57pm: Expiring battle: [S:2 P:2 A:7221]
+12:57pm: Expiring battle: [S:2 P:2 A:7258]
+12:57pm: Expiring battle: [S:2 P:3 A:7233]
+12:57pm: Expiring battle: [S:2 P:2 A:7202]
+12:57pm: Updating json
+12:57pm: Battle 98 is major... adding.
+12:57pm: Battle 127 is major... adding.
+12:57pm: Complete (Mem: 9.1MB)
 
-12:14am: 16 KMs fetched.
-12:14am: Ran fetcher - total KMs: 16
-12:15am: 16 KMs to be processed.
-12:15am: Created battle: [S:1 P:3 A:396]
-12:15am: Created battle: [S:2 P:2 A:179]
-12:15am: Created battle: [S:2 P:2 A:2074]
-12:15am: Created battle: [S:1 P:3 A:239]
-12:15am: Processed 12 KMs.
-12:15am: Ran engine.
-12:15am: Expiring battle: [S:4 P:8 A:7311]
-12:15am: Expiring battle: [S:2 P:10 A:7210]
-12:15am: Expiring battle: [S:4 P:21 A:7212]
-12:15am: Expiring battle: [S:3 P:8 A:7278]
-12:15am: Expiring battle: [S:2 P:16 A:7312]
-12:15am: Expiring battle: [S:2 P:4 A:7267]
-12:15am: Expiring battle: [S:1 P:4 A:7306]
-12:15am: Expiring battle: [S:1 P:3 A:7277]
-12:15am: Expiring battle: [S:2 P:2 A:7263]
-12:15am: Expiring battle: [S:2 P:2 A:7234]
-12:15am: Expiring battle: [S:2 P:4 A:7228]
-12:15am: Updating json
-12:15am: Updating cache for status:cache/15/802911e89c4e0057f45436750478ad (224)
-12:15am: Battle 2 is major... adding.
-12:15am: Battle 66 is major... adding.
-12:15am: Battle 157 is major... adding.
-12:15am: Battle 197 is major... adding.
-12:15am: Complete (Mem: 11998960)
+12:59pm: 28 KMs fetched.
+12:59pm: Ran fetcher - total KMs: 28
+12:59pm: 28 KMs to be processed.
+12:59pm: Created battle: [S:2 P:6 A:327]
+12:59pm: Created battle: [S:2 P:2 A:301]
+12:59pm: Created battle: [S:2 P:29 A:117]
+12:59pm: Created battle: [S:1 P:3 A:715]
+12:59pm: Created battle: [S:2 P:2 A:488]
+12:59pm: Created battle: [S:2 P:3 A:353]
+12:59pm: Created battle: [S:1 P:3 A:345]
+12:59pm: Created battle: [S:1 P:5 A:470]
+12:59pm: Created battle: [S:2 P:6 A:112]
+12:59pm: Created battle: [S:1 P:2 A:1961]
+12:59pm: Created battle: [S:1 P:4 A:236]
+12:59pm: Processed 27 KMs.
+12:59pm: Ran engine.
+12:59pm: Expiring battle: [S:2 P:4 A:7301]
+12:59pm: Expiring battle: [S:2 P:7 A:7228]
+12:59pm: Expiring battle: [S:1 P:2 A:7301]
+12:59pm: Expiring battle: [S:1 P:3 A:7277]
+12:59pm: Updating json
+12:59pm: Battle 94 is major... adding.
+12:59pm: Battle 123 is major... adding.
+12:59pm: Complete (Mem: 9.4MB)
 
-12:16am: 17 KMs fetched.
-12:16am: Ran fetcher - total KMs: 17
-12:17am: 17 KMs to be processed.
-12:17am: Created battle: [S:2 P:2 A:268]
-12:17am: Created battle: [S:2 P:3 A:188]
-12:17am: Created battle: [S:2 P:2 A:1543]
-12:17am: Created battle: [S:2 P:3 A:148]
-12:17am: Created battle: [S:2 P:2 A:1105]
-12:17am: Created battle: [S:2 P:2 A:1890]
-12:17am: Created battle: [S:1 P:2 A:202]
-12:17am: Created battle: [S:1 P:2 A:905]
-12:17am: Processed 14 KMs.
-12:17am: Ran engine.
-12:17am: Expiring battle: [S:3 P:6 A:7203]
-12:17am: Expiring battle: [S:2 P:2 A:7246]
-12:17am: Expiring battle: [S:1 P:2 A:7287]
-12:17am: Expiring battle: [S:1 P:2 A:7255]
-12:17am: Expiring battle: [S:2 P:2 A:7300]
-12:17am: Expiring battle: [S:2 P:4 A:7208]
-12:17am: Expiring battle: [S:1 P:8 A:7231]
-12:17am: Updating json
-12:17am: Battle 2 is major... adding.
-12:17am: Battle 60 is major... adding.
-12:17am: Battle 150 is major... adding.
-12:17am: Battle 190 is major... adding.
-12:17am: Complete (Mem: 11863680)
+1:00pm: 10 KMs fetched.
+1:00pm: Ran fetcher - total KMs: 10
+1:01pm: 10 KMs to be processed.
+1:01pm: Created battle: [S:1 P:3 A:521]
+1:01pm: Created battle: [S:2 P:3 A:155]
+1:01pm: Processed 9 KMs.
+1:01pm: Ran engine.
+1:01pm: Expiring battle: [S:3 P:3 A:7252]
+1:01pm: Expiring battle: [S:2 P:4 A:7302]
+1:01pm: Expiring battle: [S:1 P:2 A:7294]
+1:01pm: Expiring battle: [S:2 P:2 A:7257]
+1:01pm: Expiring battle: [S:2 P:2 A:7207]
+1:01pm: Updating json
+1:01pm: Battle 89 is major... adding.
+1:01pm: Battle 118 is major... adding.
+1:01pm: Complete (Mem: 9.4MB)
 
-12:18am: 18 KMs fetched.
-12:18am: Ran fetcher - total KMs: 18
-12:19am: 18 KMs to be processed.
-12:19am: Created battle: [S:2 P:2 A:295]
-12:19am: Created battle: [S:2 P:2 A:813]
-12:19am: Created battle: [S:2 P:2 A:202]
-12:19am: Created battle: [S:2 P:2 A:1135]
-12:19am: Processed 16 KMs.
-12:19am: Ran engine.
-12:19am: Expiring battle: [S:3 P:8 A:7255]
-12:19am: Expiring battle: [S:2 P:4 A:7209]
-12:19am: Expiring battle: [S:2 P:3 A:7273]
-12:19am: Expiring battle: [S:2 P:2 A:7258]
-12:19am: Expiring battle: [S:2 P:2 A:7290]
-12:19am: Updating json
-12:19am: Battle 2 is major... adding.
-12:19am: Battle 55 is major... adding.
-12:19am: Battle 145 is major... adding.
-12:19am: Battle 185 is major... adding.
-12:19am: Complete (Mem: 11836360)
+1:02pm: 2 KMs fetched.
+1:02pm: Ran fetcher - total KMs: 2
+1:03pm: 2 KMs to be processed.
+1:03pm: Processed 0 KMs.
+1:03pm: Ran engine.
+1:03pm: Updating json
+1:03pm: Battle 89 is major... adding.
+1:03pm: Battle 118 is major... adding.
+1:03pm: Complete (Mem: 9.3MB)
 
-12:20am: 12 KMs fetched.
-12:20am: Ran fetcher - total KMs: 12
-12:21am: 12 KMs to be processed.
-12:21am: Created battle: [S:2 P:5 A:279]
-12:21am: Created battle: [S:2 P:2 A:127]
-12:21am: Created battle: [S:1 P:2 A:2866]
-12:21am: Created battle: [S:2 P:6 A:1254]
-12:21am: Processed 8 KMs.
-12:21am: Ran engine.
-12:21am: Expiring battle: [S:3 P:43 A:7289]
-12:21am: Expiring battle: [S:3 P:15 A:7262]
-12:21am: Expiring battle: [S:2 P:5 A:7219]
-12:21am: Expiring battle: [S:1 P:3 A:7314]
-12:21am: Expiring battle: [S:2 P:2 A:7212]
-12:21am: Expiring battle: [S:2 P:2 A:7251]
-12:21am: Expiring battle: [S:1 P:2 A:7216]
-12:21am: Expiring battle: [S:1 P:2 A:7236]
-12:21am: Updating json
-12:21am: Updating cache for status:cache/15/802911e89c4e0057f45436750478ad (225)
-12:21am: Battle 1 is major... adding.
-12:21am: Battle 48 is major... adding.
-12:21am: Battle 137 is major... adding.
-12:21am: Battle 177 is major... adding.
-12:21am: Complete (Mem: 11825456)
+1:04pm: 11 KMs fetched.
+1:04pm: Ran fetcher - total KMs: 11
+1:05pm: 11 KMs to be processed.
+1:05pm: Created battle: [S:2 P:11 A:662]
+1:05pm: Processed 11 KMs.
+1:05pm: Ran engine.
+1:05pm: Updating json
+1:05pm: Battle 89 is major... adding.
+1:05pm: Battle 118 is major... adding.
+1:05pm: Updating cache for universe/systems/30002940/:cache/d9/e650eb233eb370a08a4b231788fdf4 (1017)
+1:05pm: Updating cache for universe/stars/40186664/:cache/3e/dda93468bec7c324649a59206c071d (347)
+1:05pm: Updating cache for corporations/98480589/:cache/c4/2d2c919b5d6346720d976767918d0b (701)
+1:05pm: Updating cache for alliances/99010275/:cache/9d/6826626729aba53d69b08789d3eec6 (305)
+1:05pm: Battle 220 is major... adding.
+1:05pm: Battle 221 is major... adding.
+1:05pm: Complete (Mem: 9.4MB)
 
-12:22am: 6 KMs fetched.
-12:22am: Ran fetcher - total KMs: 6
-12:23am: 6 KMs to be processed.
-12:23am: Created battle: [S:1 P:5 A:272]
-12:23am: Created battle: [S:1 P:3 A:201]
-12:23am: Processed 4 KMs.
-12:23am: Ran engine.
-12:23am: Expiring battle: [S:3 P:4 A:7209]
-12:23am: Expiring battle: [S:2 P:3 A:7253]
-12:23am: Expiring battle: [S:2 P:3 A:7291]
-12:23am: Expiring battle: [S:2 P:5 A:7317]
-12:23am: Expiring battle: [S:1 P:2 A:7272]
-12:23am: Expiring battle: [S:1 P:2 A:7261]
-12:23am: Updating json
-12:23am: Battle 1 is major... adding.
-12:23am: Battle 42 is major... adding.
-12:23am: Battle 131 is major... adding.
-12:23am: Battle 171 is major... adding.
-12:23am: Complete (Mem: 11702680)
+1:06pm: 9 KMs fetched.
+1:06pm: Ran fetcher - total KMs: 9
+1:07pm: 9 KMs to be processed.
+1:07pm: Created battle: [S:2 P:6 A:213]
+1:07pm: Created battle: [S:2 P:15 A:274]
+1:07pm: Processed 8 KMs.
+1:07pm: Ran engine.
+1:07pm: Updating json
+1:07pm: Updating cache for status:cache/15/802911e89c4e0057f45436750478ad (225)
+1:07pm: Battle 89 is major... adding.
+1:07pm: Battle 118 is major... adding.
+1:07pm: Battle 220 is major... adding.
+1:07pm: Updating cache for universe/systems/30003997/:cache/95/d0a2d88eb021298782cf4e32ca9b56 (1243)
+1:07pm: Updating cache for universe/stars/40253093/:cache/7a/265fbf803a82bc727de157d1b57e33 (342)
+1:07pm: Updating cache for corporations/98658535/:cache/a3/43b86352a8d2bb54a547e9ee6ae340 (777)
+1:07pm: Updating cache for corporations/98463330/:cache/51/cb2ada95d7aa146eda177ccdc2b456 (425)
+1:07pm: Updating cache for corporations/98654480/:cache/50/7568c49f634ef1385b4e22e7c567bd (1659)
+1:07pm: Battle 221 is major... adding.
+1:07pm: Complete (Mem: 9.5MB)
 
-12:24am: 9 KMs fetched.
-12:24am: Ran fetcher - total KMs: 9
-12:25am: 9 KMs to be processed.
-12:25am: Created battle: [S:2 P:2 A:1758]
-12:25am: Created battle: [S:2 P:2 A:184]
-12:25am: Created battle: [S:2 P:3 A:350]
-12:25am: Created battle: [S:2 P:3 A:2489]
-12:25am: Processed 9 KMs.
-12:25am: Ran engine.
-12:25am: Expiring battle: [S:2 P:10 A:7297]
-12:25am: Expiring battle: [S:2 P:4 A:7314]
-12:25am: Expiring battle: [S:2 P:5 A:7230]
-12:25am: Expiring battle: [S:2 P:2 A:7305]
-12:25am: Updating json
-12:25am: Battle 1 is major... adding.
-12:25am: Battle 38 is major... adding.
-12:25am: Battle 127 is major... adding.
-12:25am: Battle 167 is major... adding.
-12:25am: Complete (Mem: 11687096)
+1:08pm: 10 KMs fetched.
+1:08pm: Ran fetcher - total KMs: 10
+1:09pm: 10 KMs to be processed.
+1:09pm: Created battle: [S:2 P:2 A:93]
+1:09pm: Created battle: [S:2 P:5 A:134]
+1:09pm: Created battle: [S:2 P:3 A:240]
+1:09pm: Created battle: [S:2 P:3 A:810]
+1:09pm: Created battle: [S:2 P:2 A:366]
+1:09pm: Processed 7 KMs.
+1:09pm: Ran engine.
+1:09pm: Updating json
+1:09pm: Battle 89 is major... adding.
+1:09pm: Battle 118 is major... adding.
+1:09pm: Battle 220 is major... adding.
+1:09pm: Battle 221 is major... adding.
+1:09pm: Complete (Mem: 9.7MB)
 
-12:26am: 7 KMs fetched.
-12:26am: Ran fetcher - total KMs: 7
-12:27am: 7 KMs to be processed.
-12:27am: Processed 6 KMs.
-12:27am: Ran engine.
-12:27am: Expiring battle: [S:3 P:5 A:7289]
-12:27am: Expiring battle: [S:2 P:5 A:7207]
-12:27am: Expiring battle: [S:1 P:3 A:7228]
-12:27am: Expiring battle: [S:2 P:28 A:7289]
-12:27am: Expiring battle: [S:2 P:3 A:7294]
-12:27am: Expiring battle: [S:2 P:7 A:7238]
-12:27am: Updating json
-12:27am: Updating cache for status:cache/15/802911e89c4e0057f45436750478ad (224)
-12:27am: Battle 1 is major... adding.
-12:27am: Battle 32 is major... adding.
-12:27am: Battle 121 is major... adding.
-12:27am: Battle 161 is major... adding.
-12:27am: Complete (Mem: 11659136)
+1:10pm: 4 KMs fetched.
+1:10pm: Ran fetcher - total KMs: 4
+1:11pm: 4 KMs to be processed.
+1:11pm: Created battle: [S:2 P:2 A:328]
+1:11pm: Created battle: [S:2 P:3 A:458]
+1:11pm: Processed 3 KMs.
+1:11pm: Ran engine.
+1:11pm: Updating json
+1:11pm: Battle 89 is major... adding.
+1:11pm: Battle 118 is major... adding.
+1:11pm: Battle 220 is major... adding.
+1:11pm: Battle 221 is major... adding.
+1:11pm: Complete (Mem: 9.7MB)
 
-12:28am: 25 KMs fetched.
-12:28am: Ran fetcher - total KMs: 25
-12:29am: 25 KMs to be processed.
-12:29am: Created battle: [S:2 P:16 A:170]
-12:29am: Created battle: [S:2 P:3 A:655]
-12:29am: Created battle: [S:2 P:6 A:625]
-12:29am: Created battle: [S:2 P:6 A:556]
-12:29am: Created battle: [S:2 P:6 A:462]
-12:29am: Created battle: [S:2 P:2 A:278]
-12:29am: Created battle: [S:2 P:2 A:297]
-12:29am: Processed 18 KMs.
-12:29am: Ran engine.
-12:29am: Expiring battle: [S:8 P:19 A:7227]
-12:29am: Expiring battle: [S:2 P:2 A:7292]
-12:29am: Expiring battle: [S:2 P:4 A:7294]
-12:29am: Updating json
-12:29am: Battle 1 is major... adding.
-12:29am: Battle 29 is major... adding.
-12:29am: Battle 118 is major... adding.
-12:29am: Battle 158 is major... adding.
-12:29am: Complete (Mem: 11675712)
-
-12:30am: 26 KMs fetched.
-12:30am: Ran fetcher - total KMs: 26
-12:31am: 26 KMs to be processed.
-12:31am: Created battle: [S:2 P:3 A:507]
-12:31am: Created battle: [S:2 P:2 A:509]
-12:31am: Created battle: [S:2 P:3 A:376]
-12:31am: Created battle: [S:2 P:6 A:172]
-12:31am: Created battle: [S:2 P:3 A:539]
-12:31am: Created battle: [S:1 P:2 A:199]
-12:31am: Created battle: [S:1 P:4 A:213]
-12:31am: Created battle: [S:1 P:4 A:659]
-12:31am: Processed 17 KMs.
-12:31am: Ran engine.
-12:31am: Expiring battle: [S:1 P:2 A:7289]
-12:31am: Expiring battle: [S:2 P:4 A:7214]
-12:31am: Updating json
-12:31am: Battle 1 is major... adding.
-12:31am: Battle 28 is major... adding.
-12:31am: Battle 116 is major... adding.
-12:31am: Battle 156 is major... adding.
-12:31am: Complete (Mem: 11697336)
-
-12:32am: 14 KMs fetched.
-12:32am: Ran fetcher - total KMs: 14
-12:33am: 14 KMs to be processed.
-12:33am: Created battle: [S:2 P:2 A:1999]
-12:33am: Created battle: [S:2 P:2 A:2465]
-12:33am: Created battle: [S:1 P:4 A:663]
-12:33am: Created battle: [S:1 P:3 A:326]
-12:33am: Created battle: [S:2 P:5 A:150]
-12:33am: Created battle: [S:2 P:2 A:1406]
-12:33am: Created battle: [S:2 P:2 A:501]
-12:33am: Created battle: [S:2 P:3 A:768]
-12:33am: Processed 9 KMs.
-12:33am: Ran engine.
-12:33am: Expiring battle: [S:2 P:59 A:7209]
-12:33am: Expiring battle: [S:4 P:10 A:7288]
-12:33am: Expiring battle: [S:1 P:3 A:7209]
-12:33am: Expiring battle: [S:2 P:6 A:7228]
-12:33am: Expiring battle: [S:1 P:3 A:7234]
-12:33am: Expiring battle: [S:2 P:2 A:7220]
-12:33am: Expiring battle: [S:2 P:3 A:7241]
-12:33am: Updating json
-12:33am: Updating cache for status:cache/15/802911e89c4e0057f45436750478ad (225)
-12:33am: Battle 1 is major... adding.
-12:33am: Battle 24 is major... adding.
-12:33am: Battle 109 is major... adding.
-12:33am: Battle 149 is major... adding.
-12:33am: Complete (Mem: 11753040)
-
-12:34am: 14 KMs fetched.
-12:34am: Ran fetcher - total KMs: 14
-12:35am: 14 KMs to be processed.
-12:35am: Created battle: [S:1 P:5 A:3043]
-12:35am: Created battle: [S:2 P:2 A:478]
-12:35am: Created battle: [S:2 P:2 A:150]
-12:35am: Created battle: [S:2 P:5 A:263]
-12:35am: Created battle: [S:2 P:2 A:238]
-12:35am: Created battle: [S:2 P:2 A:240]
-12:35am: Processed 13 KMs.
-12:35am: Ran engine.
-12:35am: Expiring battle: [S:3 P:6 A:7214]
-12:35am: Expiring battle: [S:4 P:9 A:7220]
-12:35am: Expiring battle: [S:1 P:3 A:7248]
-12:35am: Expiring battle: [S:2 P:2 A:7232]
-12:35am: Expiring battle: [S:2 P:2 A:7267]
-12:35am: Expiring battle: [S:2 P:5 A:7217]
-12:35am: Expiring battle: [S:1 P:2 A:7215]
-12:35am: Expiring battle: [S:2 P:15 A:7221]
-12:35am: Expiring battle: [S:1 P:2 A:7245]
-12:35am: Updating json
-12:35am: Battle 1 is major... adding.
-12:35am: Battle 20 is major... adding.
-12:35am: Battle 100 is major... adding.
-12:35am: Battle 140 is major... adding.
-12:35am: Complete (Mem: 11697744)
-
-9:44am: 0 KMs fetched.
-9:44am: Ran fetcher - total KMs: 0

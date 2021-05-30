@@ -137,6 +137,6 @@ class KM
      */
     function isSkippable()
     {
-        return $this->isNPC;
+        return $this->isNPC || !$this->success;
     }
 }

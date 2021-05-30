@@ -42,7 +42,7 @@ class Event {
      */
     function output() {
         return [
-            't' => $this->ts,
+            'ts' => $this->ts,
             'y' => $this->type,
             'i' => $this->targetID
         ];

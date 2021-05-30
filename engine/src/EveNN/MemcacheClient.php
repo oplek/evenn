@@ -6,10 +6,16 @@ namespace EveNN;
  * Memcache client
  */
 class MemcacheClient {
+
     /**
      * The Memcached client.
      */
     protected static $client = NULL;
+
+    /**
+     * @var string $prefix The memcached storage prefix.
+     */
+    public static string $prefix = 'var_';
     
     /**
      * Initalize/gets the client.
@@ -38,7 +44,7 @@ class MemcacheClient {
      *   The 
      */
     static function get($key, $default = NULL) {
-        $val = self::getClient()->get("var_{$key}");
+        $val = self::getClient()->get(self::$prefix . $key);
         if ( $val === FALSE ) {
             return $default;
         }
@@ -57,7 +63,7 @@ class MemcacheClient {
      * @see https://www.php.net/manual/en/memcached.expiration.php
      */
     static function set($key, $value, $expires = 0) {
-        self::getClient()->set("var_{$key}", $value, $expires);
+        self::getClient()->set(self::$prefix . $key, $value, $expires);
     }
 
     /**
@@ -67,6 +73,6 @@ class MemcacheClient {
      *   The key to delete.
      */
     static function delete($key) {
-        self::getClient()->delete("var_{$key}");
+        self::getClient()->delete(self::$prefix . $key);
     }
 }

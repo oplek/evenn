@@ -56,7 +56,7 @@ class Engine
         Log::log(count(array_keys($kms)) . " KMs to be processed.");
         foreach ($kms as $kmRaw) {
             $km = new KM($kmRaw);
-            if (!$km->success) {
+            if ($km->isSkippable()) {
                 continue;
             }
 
@@ -90,7 +90,17 @@ class Engine
     }
 
     /**
+     * Stores the current battles into memcached.
+     * Note: This is meant mostly for setting up tests.
+     * 
+     */
+    static function storeBattles() {
+        MemcacheClient::set('battles', self::$battles);
+    }
+
+    /**
      * Expires old battles.
+     * 
      */
     static function expireBattles()
     {
@@ -99,7 +109,7 @@ class Engine
 
         // Only keep recent battles
         $expiration = time() - Config::get('max_battle_age');
-        foreach (self::$battles as $b) {
+        foreach (self::$battles as $b) {            
             if ($b->latestKMTime > $expiration) {
                 $temp[] = $b;
             } else {
@@ -118,19 +128,19 @@ class Engine
     {
         Log::log("Updating json");
 
-        $status = ESI::request('status', [], 300);
+        $status = ESI::request('status', [], 900);
 
         $battlesOutput = [
-            'battles' => [],
+            'brref' => [],
             'status' => $status['json'],
             'ships' => [],
-            'systems' => [],
+            'sysref' => [],
             'corps' => [],
             'alliances' => []
         ];
         foreach (self::$battles as $i => $b) {
-            if ($b->isMajor()) {
-                $battlesOutput['battles'][] = $b->output($battlesOutput);
+            if ($b->isMajorAndValid()) {
+                $battlesOutput['brref'][] = $b->output($battlesOutput);
                 Log::log("Battle {$i} is major... adding.");
             }
         }

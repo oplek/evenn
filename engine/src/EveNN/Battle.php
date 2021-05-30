@@ -209,8 +209,14 @@ class Battle
                     $a->attackerID,
                     $a->corpID,
                     $a->allianceID,
-                    $a->shipID
+                    $a->shipID, 
+                    $a->weaponID
                 );
+            }
+
+            // Updates
+            if ( !$this->participants[$a->attackerID]->weaponID && $a->weaponID ) {
+                $this->participants[$a->attackerID]->weaponID = $a->weaponID;
             }
         }
     }
@@ -320,8 +326,8 @@ class Battle
      * @return bool
      *   TRUE if yes.
      */
-    function isMajor($threshold = 5) {
-        if ( count($this->sides) < 2 ) { return FALSE; }
+    function isMajorAndValid($threshold = 2) {
+        if ( count($this->sides) != 2 ) { return FALSE; }
         return count($this->sides[0]->memberIDs) > $threshold && count($this->sides[1]->memberIDs) > $threshold;
     }
     
@@ -362,13 +368,15 @@ class Battle
     function output(&$global) {
 
         $structure = [
-            'start' => $this->time,           // Start time
-            'end' => $this->latestKMTime,     // End time
-            'system_id' => $this->systemID,    // System ID
-            'loc_id' => $this->locationID,     // Location ID
+            'ts' => $this->time,                // Start time
+            'begin' => $this->time - 120,
+            'end' => $this->latestKMTime,       // End time
+            'sid' => $this->systemID,           // System ID
+            'locid' => $this->locationID,       // Location ID
             //'loc' => $this->loc,              // Location
-            'sides' => [],                    // Sides
-            'events' => [],                   // Events
+            'sides' => [],                      // Sides
+            'chars' => [],
+            'events' => [],                     // Events
             'event_types' => [
                 'arrive' => Event::ARRIVE,
                 'destroy' => Event::DESTROY,
@@ -381,12 +389,12 @@ class Battle
         }
 
         // Update global data
-        if ( !isset($global['systems'][$this->systemID]) ) {
-            $global['systems'][$this->systemID] = ExtendedData::lookupSystem($this->systemID);
+        if ( !isset($global['sysref'][$this->systemID]) ) {
+            $global['sysref'][$this->systemID] = ExtendedData::lookupSystem($this->systemID);
 
             // Secondary lookup - star type
-            $global['systems'][$this->systemID]['star'] = 
-                ExtendedData::lookupStar($global['systems'][$this->systemID]['star_id']);
+            $global['sysref'][$this->systemID]['star'] = 
+                ExtendedData::lookupStar($global['sysref'][$this->systemID]['star_id']);
         }
 
         // Add sides
@@ -406,17 +414,26 @@ class Battle
                     't' => $this->time
                 ];
 
+                // Track character
+                $structure['chars'][$id] = [
+                    'ship_id' => $participant->shipID                    
+                ];          
+                if ( $participant->shipID != $participant->weaponID ) {
+                    $structure['chars'][$id]['wep_id'] = $participant->weaponID;
+                }      
+
                 // Update central data for ship
                 if ( !isset($global['ships'][$participant->shipID]) ) {
                     if ($participant->shipID > 0) {
-                        $global['ships'][$participant->shipID] = ExtendedData::lookupShip($participant->shipID);
-                        $shipData = &$global['ships'][$participant->shipID];
+                        $sdata = ExtendedData::lookupShip($participant->shipID);
+                        $global['ships'][$participant->shipID] = [
+                            'gid' => $sdata['group_id']
+                        ];
 
                         // Group data
-                        $groupData = ExtendedData::lookupItemGroup($shipData['group_id']);
-                        foreach($groupData as $k=>$v) { $shipData["group_{$k}"] = $v; } 
-                        unset($shipData['group_id']) ;                 
-                        unset($shipData['type_id']) ;                 
+                        $gdata = ExtendedData::lookupItemGroup($sdata['group_id']);
+                        $global['ships'][$participant->shipID]['name'] = $gdata['name'];  
+                        $global['ships'][$participant->shipID]['cid'] = $sdata['category_id'];                      
                     }
                 }
             }

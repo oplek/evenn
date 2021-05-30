@@ -1,4 +1,119 @@
 
+/**
+ * Common module core functionality/data.
+ * This my "fuck it" moment, when I couldn't get the prototype "inhertience" to work the way I wanted
+ */
+ function CoreModule(parentRef) {
+    this.panel = false;             //Designated panel object
+    this.priority = 1;              //Priority of module, 1-3 (priority level also affects how many of modules can fit in a slot).. the higher, the "larger" it is in the slot's available space
+    this.id = false;                //Module ID (internal)
+    this.isReady = false;           //Is this module ready for rendering?  
+    this.isActive = false;          //Is the module currently active (showing)?
+    this.parentRef = parentRef;     //Reference back to the parent module, if needed
+    this.timeSinceActivated = false;//When was this module activated last?
+    this.minimumActiveTime = 10000; //How long should this show before another is allowed to take its place? (ms)
+}
+
+/**
+ * Fetches the moduel priority level
+ */
+CoreModule.prototype.GetPriority = function() { return this.priority; }
+
+/**
+ * Fetches the moduel priority level
+ */
+CoreModule.prototype.IsReadyAndActive = function() { return this.isReady && this.isActive; }
+
+/**
+ * Fetches module activity
+ */
+CoreModule.prototype.IsActive = function() { return this.isActive; }
+
+/**
+ * Fetches module readiness
+ */
+CoreModule.prototype.IsReady = function() { return this.isReady; }
+
+/**
+ * Sets the module ready flag
+ */
+CoreModule.prototype.SetReady = function(flag) { this.isReady = flag; }
+
+
+/**
+ * Initialize (this does not support async load)
+ */
+CoreModule.prototype.Init = function(panel,id) {
+    this.panel = panel;
+    this.id = id;
+}   
+
+/**
+ * Attempts to enable the module for display
+ */
+CoreModule.prototype.RequestSlot = function() {
+    if ( this.isActive ) {
+        //l("RequestEnable: Module " + this.id + " aleady active.");
+        // ?
+    } else {        
+        if ( this.panel ) {
+        var status = this.panel.displayRef.RequestSlot(this.parentRef); //This can override another module that's presenting
+            if ( status ) {
+                // ?
+            }
+        }
+    }
+}
+
+/**
+ * Disables the module from actively showing
+ */
+CoreModule.prototype.Disable = function() { 
+    this.isActive = false; 
+    this.panel.Disable();
+}
+/**
+ * Enables the module for active showing
+ */
+CoreModule.prototype.Enable = function() { 
+    console.log("enable",this.id);
+    this.isActive = true; 
+    this.panel.Enable();
+    this.timeSinceActivated = new Date();
+}
+
+/**
+ * Fetches the panel HTML object
+ */
+CoreModule.prototype.PanelHtml = function() {
+    return this.panel.htmlObj;
+}
+
+// HTML helpers
+//=====================================
+
+
+/**
+ * Returns the inner height of the module's panel
+ */
+CoreModule.prototype.PanelHeightInner = function() {
+    return $(this.panel.htmlObj).height() - parseInt($(this.panel.htmlObj).css("padding-top")) - parseInt($(this.panel.htmlObj).css("padding-bottom"));
+}
+
+/**
+ * Returns the inner Width of the module's panel
+ */
+CoreModule.prototype.PanelWidthInner = function() {
+    return $(this.panel.htmlObj).width() - parseInt($(this.panel.htmlObj).css("padding-left")) - parseInt($(this.panel.htmlObj).css("padding-right"));
+}
+
+CoreModule.prototype.Html_Row = function(label,id) {
+    return "<div class='row'><div class='label'>"+label+"</div><div class='value' id='"+id+"'></div>";
+} 
+
+
+
+
 
 /**
  * Battle report module
@@ -66,7 +181,7 @@ ModuleBattleReport.prototype.Init = function(panel,id,onComplete) {
     this.loader = new Loader('#br_loading');
 
     var self = this;    
-    this.loader.Add('webfiles/starmap.json');
+    this.loader.Add('starmap.json');
     this.loader.Load(function() {
         self.data.mapIsLoaded = true;
         self.InitStarmap();
@@ -82,7 +197,7 @@ ModuleBattleReport.prototype.UpdateData = function(newdata) {
     //--------------------------------------------------------------------
     this.data.brref = newdata.brref;
     this.data.sysref = newdata.sysref; 
-    this.data.hm = newdata.hm;
+    //this.data.hm = newdata.hm;
 }
 
 /**
@@ -129,17 +244,20 @@ ModuleBattleReport.prototype.RunPresentation = function(lastTs) {
 
     //Show a battle report
     if ( this.data.mapMode == this.const.MAPMODE_DEFAULT && ts > this.data.highlightCooldown ) { //Let's highlight one of them
+        //console.log(this.data);
+        
         var br = this.data.brref[this.data.br_index];
         if ( br ) {
         
             var self = this;
             self.data.mapMode = self.const.MAPMODE_HIGHLIGHT_LOADING;
-            $.getJSON("/report.json",{id:br.ts},function(data,success) {
+            $.getJSON("/report.json", {id:br.ts}, function(data,success) {
                 //self.data.highlightTimeout = ts + TIME_MINUTE * 0.10;
                 self.data.mapMode = self.const.MAPMODE_HIGHLIGHT_SYSTEM;
-                self.Camera_FocusOnStar(br.sid,function() {            
-                    self.data.three.systemBR.Init(self.data.sysref[br.sid],data);
-                    self.data.three.locationBR.Init(self.data.sysref[br.sid],data,function() {
+                self.Camera_FocusOnStar(br.sid,function() {  
+                    //console.log("test4", br.sid, self.data.sysref) ;         
+                    self.data.three.systemBR.Init(self.data.sysref[br.sid],br);
+                    self.data.three.locationBR.Init(self.data.sysref[br.sid], br, data, function() {
                         //Battle complete
 
                         self.Camera_Reset();
@@ -226,7 +344,7 @@ ModuleBattleReport.prototype.InitStarmap = function() {
 
     //Establish the stars
     var geometry = new THREE.BufferGeometry();
-    this.data.starmap = this.loader.Get("webfiles/starmap.json");
+    this.data.starmap = this.loader.Get("starmap.json");
     this.data.numPoints = this.data.starmap.numStars;
 
     //Gate data
@@ -545,14 +663,15 @@ ModuleBattleReport_SubmoduleSystem.prototype.Resize = function() {
  */
 ModuleBattleReport_SubmoduleSystem.prototype.Init = function(sysref,br) {
     var self = this;
+    console.log('ModuleBattleReport_SubmoduleSystem', br);
 
     //First-run initializations
-    if ( !this.data.isInitialized )
+    if ( !this.data.isInitialized ) {
        this.InitOnce(sysref,br);    
+    }
 
     this.data.sysref = sysref;
     this.data.br = br;
-    console.log("ModuleBattleReport_SubmoduleSystem",sysref,br);
 
     //Set target to location
     var loc = false;
@@ -661,7 +780,7 @@ ModuleBattleReport_SubmoduleSystem.prototype.InitOnce = function(sysref,br) {
      });
 
      //Establish target
-     var targetMap = new THREE.TextureLoader().load("webfiles/images/sprite_target.png");
+     var targetMap = new THREE.TextureLoader().load("images/sprite_target.png");
      this.data.three.mats.targetMat = new THREE.SpriteMaterial({ 
          map: targetMap, 
          color: 0xffffff,
@@ -890,22 +1009,23 @@ ModuleBattleReport_SubmoduleLocation.prototype.Resize = function() {
 /**
  * Initialize with system data and battle report
  */
-ModuleBattleReport_SubmoduleLocation.prototype.Init = function(sysref,br,onComplete) {
+ModuleBattleReport_SubmoduleLocation.prototype.Init = function(sysref, br, jsonData, onComplete) {
     //First-run initializations
-    if ( !this.data.isInitialized ) 
+    if ( !this.data.isInitialized ) {
         this.InitOnce(sysref,br);
+    }
 
     //Store for later
     var self = this;
     this.data.sysref = sysref;
     this.data.br = br;   
 
-    console.log("ModuleBattleReport_SubmoduleLocation",sysref,br);
+    console.log("ModuleBattleReport_SubmoduleLocation",sysref,br, jsonData);
 
     //Establish sides
     this.data.sideLookup = {};
     var sindex = 0;
-    for(var i in br.data.sides) {
+    for(var i in br.sides) {
         this.data.sideLookup[i] = sindex;
         sindex++;
     }   
@@ -913,8 +1033,8 @@ ModuleBattleReport_SubmoduleLocation.prototype.Init = function(sysref,br,onCompl
     
     //Add ships
     var numChars = 0;
-    for(var i in br.data.chars) {
-        var c = br.data.chars[i];
+    for(var i in br.chars) {
+        var c = br.chars[i];
         var side = c.side ? this.data.sideLookup[c.side] : false; //temp
         var ship_id = c.ship_id ? c.ship_id : 0;
 
@@ -923,7 +1043,7 @@ ModuleBattleReport_SubmoduleLocation.prototype.Init = function(sysref,br,onCompl
             continue; //Couldn't determine side properly - backend marked as neutral
         }
 
-        var shipref = br.data.ships[ship_id];
+        var shipref = jsonData.ships[ship_id];
         var ship_gid = 0;
         if ( shipref ) {
             ship_gid = shipref.gid;
@@ -946,6 +1066,8 @@ ModuleBattleReport_SubmoduleLocation.prototype.Init = function(sysref,br,onCompl
             size: icon.size
         };
 
+        //console.log("meta", obj.meta, shipref);
+
         var ss = 1/20;
         obj.scale.set(ss,ss,ss);
         numChars++;
@@ -954,8 +1076,9 @@ ModuleBattleReport_SubmoduleLocation.prototype.Init = function(sysref,br,onCompl
     //Organize
     
     var sortedShips = this.SortShips();
-    var startTime = this.data.br.data.events[0].ts;
-    var endTime = this.data.br.data.events[this.data.br.data.events.length-1].ts;
+    console.log("test2", this.data.br, br);
+    var startTime = this.data.br.events[0].ts;
+    var endTime = this.data.br.events[this.data.br.events.length-1].ts;
 
     //Presentation animation
     
@@ -1001,7 +1124,7 @@ ModuleBattleReport_SubmoduleLocation.prototype.InitOnce = function(sysref,br) {
     
     //Set up ship icons
     for(var i in this.const.SHIP_LOOKUP) {
-        var targetMap = new THREE.TextureLoader().load("webfiles/images/icon_"+this.const.SHIP_LOOKUP[i].file+".png");
+        var targetMap = new THREE.TextureLoader().load("images/icon_"+this.const.SHIP_LOOKUP[i].file+".png");
 
         //Side 0/A
         this.data.three.mats["icon_" + i + "_0"] = new THREE.SpriteMaterial({ 
@@ -1024,7 +1147,7 @@ ModuleBattleReport_SubmoduleLocation.prototype.InitOnce = function(sysref,br) {
     //---------------
 
     //Warp-in poof
-    var poofMap = new THREE.TextureLoader().load("webfiles/images/sprite_warpin.png");
+    var poofMap = new THREE.TextureLoader().load("images/sprite_warpin.png");
     this.data.three.mats.sprite_warpin = new THREE.SpriteMaterial({ 
         map: poofMap, 
         color: 0xffffff,
@@ -1146,6 +1269,7 @@ ModuleBattleReport_SubmoduleLocation.prototype.SortShips = function() {
     var presort = [[],[]];
     for(var i in this.data.three.objs.ships ) {
         o = this.data.three.objs.ships[i];
+        console.log(i, o);
         if ( !o.isIdle ) {
             var shipData = this.const.SHIP_LOOKUP[o.meta.ship_gid];
             if ( shipData || shipData.size ) {

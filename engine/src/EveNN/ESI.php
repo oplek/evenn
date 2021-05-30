@@ -30,7 +30,7 @@ class ESI
      */
     public static function request($call, $params = [], $expires = FALSE, $depth = 0)
     {
-        if ($depth > 5) {
+        if ($depth > 2) {
             return FALSE;
         }
 
@@ -77,6 +77,7 @@ class ESI
                 usleep(75000); //Rate-limit accessing ESI                
                 return $response;
             } else {
+                sleep(5);
                 Log::log("ESI Error: " . print_r($response, TRUE));
                 return FALSE;
             }

@@ -11,6 +11,13 @@ use EveNN\MemcacheClient;
 final class MemcachedTest extends TestCase
 {
     /**
+     * Update memcache prefix.
+     */
+    protected function setUp(): void {
+        MemcacheClient::$prefix = 'test_';
+    }
+
+    /**
      * @covers EveNN\MemcacheClient::set()
      * @covers EveNN\MemcacheClient::get()
      * @covers EveNN\MemcacheClient::delete()
